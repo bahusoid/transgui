@@ -22,7 +22,11 @@ jobs:
       with:
         lazarus-version: ${{ matrix.lazarus-versions }}
         include-packages: "Synapse 40.1"
-    - name: make
-      run: make
-    - name: make zip
-      run: make zipdist
+    - name: Build the Main Application
+      run: |
+        set path=%LAZARUS_DIR%;%LAZARUS_DIR%\fpc\3.0.4\bin\i386-win32;%path%
+        lazbuild "transgui.lpi"        
+    - uses: actions/upload-artifact@v2
+      with:
+       name: my-artifact
+       path: D:\a\transgui\transgui\units\transgui.exe
