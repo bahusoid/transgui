@@ -24,8 +24,8 @@ jobs:
         include-packages: "Synapse 40.1"
     - name: Build the Main Application
       run: |
-        lazbuild "transgui.lpi"        
+        lazbuild "transgui.lpi" --build-ide:"-O3 -g- -CX -XX -Xs -Scgi -l -vewnhibq"
     - uses: actions/upload-artifact@v2
       with:
-       name: my-artifact
+       name: transgui.exe.zip
        path: D:\a\transgui\transgui\units\transgui.exe
